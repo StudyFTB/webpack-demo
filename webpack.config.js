@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-    mode: "development",
+    mode: "production",
     entry: './src/index.js',
     output: {
         filename: 'bundle.[hash].js',
@@ -19,9 +19,22 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'webpack-demo'
+            title: 'webpack-demo',
+            template: './public/index.html',
+            filename: 'index.html'
         }),
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin()
-    ]
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            }
+        ]
+    }
 }
