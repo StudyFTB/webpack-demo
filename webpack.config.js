@@ -19,9 +19,9 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'webpack-demo',
             template: './public/index.html',
-            filename: 'index.html'
+            filename: 'index.html',
+            title: 'webpack-demo'
         }),
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin()
