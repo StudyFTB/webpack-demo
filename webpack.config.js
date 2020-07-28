@@ -4,10 +4,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-    mode: "production",
+    mode: 'development',
     entry: './src/index.js',
     output: {
-        filename: 'bundle.[hash].js',
+        filename: 'bundle.[hash:8].js',
         path: path.resolve(__dirname,'dist')
     },
     devtool: 'inline-source-map', // 跟踪错误
@@ -17,14 +17,14 @@ module.exports = {
         contentBase: './dist'
     },
     plugins: [
-        new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({
+        new CleanWebpackPlugin(), // 清除dist
+        new HtmlWebpackPlugin({ // html
             template: './public/index.html',
             filename: 'index.html',
             title: 'webpack-demo'
         }),
         new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin() // 热更新
     ],
     module: {
         rules: [
