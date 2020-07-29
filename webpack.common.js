@@ -1,5 +1,4 @@
 const path = require('path');
-const nodeEnv = process.env.NODE_ENV; // 环境
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 抽离css
 
@@ -24,9 +23,23 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    nodeEnv === "production" ? MiniCssExtractPlugin.loader : "style-loader",
+                    MiniCssExtractPlugin.loader,
                     "css-loader",
                     "postcss-loader" // 添加前缀
+                ]
+            },
+            {
+                test: /\.js$/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: { // 用babel-loader需要把es6->es5
+                            presets: ["@babel/preset-env"],
+                            plugins: [
+                                '@babel/plugin-proposal-class-properties'
+                            ]
+                        }
+                    }
                 ]
             }
         ]
