@@ -30,17 +30,18 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                use: [
-                    {
-                        loader: 'babel-loader',
-                        options: { // 用babel-loader需要把es6->es5
-                            presets: ["@babel/preset-env"],
-                            plugins: [
-                                '@babel/plugin-proposal-class-properties'
-                            ]
-                        }
+                use: {
+                    loader: 'babel-loader',
+                    options: { // 用babel-loader需要把es6->es5
+                        presets: ["@babel/preset-env"], // 转换js语法
+                        plugins: [
+                            '@babel/plugin-proposal-class-properties' // 转换class
+                        ]
                     }
-                ]
+                },
+                include: path.resolve(__dirname,'./src'),
+                // 排除node_modules文件夹里面的
+                exclude: /ndoe_modules/
             }
         ]
     },
