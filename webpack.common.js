@@ -28,6 +28,16 @@ module.exports = {
                     "postcss-loader" // 添加前缀
                 ]
             },
+            // {
+            //     test: /\.js$/,
+            //     use: {
+            //         loader: "eslint-loader",
+            //         options: {
+            //             enforce: "pre"
+            //         }
+            //     },
+            //     exclude: /node_modules/
+            // },
             {
                 test: /\.js$/,
                 use: {

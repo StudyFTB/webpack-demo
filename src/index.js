@@ -1,4 +1,4 @@
-import '@/style/main.css';
+// import '@/style/main.css';
 
 ((item) => {
     console.log(item)
